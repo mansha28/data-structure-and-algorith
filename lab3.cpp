@@ -1,3 +1,4 @@
+
 #include<iostream>
 #include<stack>
 #include<bits/stdc++.h>
@@ -10,16 +11,20 @@ for(int i=0;i<s.length();i++)
 {
           if(s[i]=='('||s[i]=='{'||s[i]=='['||s[i]=='<')
             { c.push(s[i]); continue;  }
-               if(c.empty()) return false;
-                 if(s[i]==')'||s[i]=='}'||s[i]==']'||s[i]=='>')
-                    {  
-                      x = c.top();
-                      c.pop();
-                      if(x==s[i])
-                        {
-                          return true;
-                          continue;}
-                        }
+               
+             // if(c.empty()) return false;  
+                 
+                  if(s[i]==')'||s[i]=='}'||s[i]==']'||s[i]=='>')
+                    { 
+                       if(c.empty()) return false;
+                       else{  x=c.top();
+                             if(x=='('&&s[i]==')') {c.pop(); continue;}
+                             if(x=='{'&&s[i]=='}') {c.pop(); continue;}
+                             if(x=='['&&s[i]==']') {c.pop(); continue;}
+                             if(x=='<'&&s[i]=='>') {c.pop(); continue;}
+                             return false;
+                           } 
+                    }
 if(s[i]=='|'&&c.empty())
 {c.push(s[i]);
 continue;}
@@ -30,10 +35,8 @@ if(x=='|')
 {c.pop();}
 if(x!='|')
 {c.push('|');}}
-if((s[i]=='}'||s[i]==')'||s[i]==']'||s[i]=='>')&& c.empty())
-{return false;
-break;}
-   
+
+  
 }
 return (c.empty());
 }
@@ -46,8 +49,8 @@ for(int i=0;i<n;i++){
 
 cin>>str[i];
 
-if(balancebrack(str[i])) cout<<"YES";
-else cout<<"NO";
+if(balancebrack(str[i])) cout<<"YES\n";
+else cout<<"NO\n";
 }
 return 0;
 }
