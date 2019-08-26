@@ -137,36 +137,6 @@ for(int i = 0; i < s.length(); i++)
          q.clear();
 
  
-        if((s[i] >= 'a' && s[i] <= 'z')||(s[i] >= 'A' && s[i] <= 'Z')) 
-        {string r="";
-         r.push_back(s[i]);
-         ns.push_back(r);}
-          r.clear();
-  
-        if(s[i] == '(') 
-          {string r="";
-         r.push_back(s[i]);
-         st.push(r);}
-
-       r.clear();
-
-          string d="(";
-       
-        if(s[i] == ')') 
-        { 
-            while(st.top() != x && st.top() !=d) 
-            { 
-                string c = st.top(); 
-                st.pop(); 
-               ns.push_back(c);
-            } 
-            if(st.top() == d) 
-            { 
-                string c = st.top(); 
-                st.pop(); 
-            } 
-        } 
-          
         
         if(s[i]=='+'||s[i]=='/'||s[i]=='*'||s[i]=='-'||s[i]=='^'){ string f=st.top();
                char c=f[0];
