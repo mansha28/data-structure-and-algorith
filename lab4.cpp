@@ -163,10 +163,11 @@ for(int i = 0; i < s.length(); i++)
 
 
 int main()
-{ int k,l;
-cin>>k;
+{ int k,l,a;
+cin>>k>>a;
 for(l=0;l<k;l++)
-{string o;
+{for(int v=0;v<a;v++){
+    string o;
 cin>>o;
 vector<string> j = intopo(o);
 int i;
@@ -175,4 +176,4 @@ int num = eval(a);
 cout<<num<<endl;}
 }
 
-
+}
