@@ -1,17 +1,18 @@
 #include<iostream>
 #include<stdio.h>
+#include<vector>
 using namespace std;
 int main()
 {
     int n,q,max,t,ammount;
+    int a,id;
     cin>>n>>q;
     max=0;
-    int userid[q];
+    vector <int> userid;
     t=0;
-    for(int i=1;i<=n;i++) userid[i]=0;
-    for(int i=1;i<=q;i++)
+    userid={0};
+    for(int i=0;i<q;i++)
     {
-        int a,id;
         cin>>a;
         switch(a)
         {
@@ -23,10 +24,11 @@ int main()
                         t=id;
                     }
                     break;
-            case 2: if(t==0) cout<<"No data available";
+            case 2: if(t==0) cout<<"No data available ";
                     else cout<<t;
                     break;
-                    
+            default : cout<<"choice is other than 1 or 2";
+                        break;        
         }
     }
 }
