@@ -1,5 +1,6 @@
  #include<iostream>
  #include<vector>
+ #include<climits>
  using namespace std;
  int count;
  bool is_valid(int x,int y,int key,vector<vector<int>>&input,vector<vector<int>>&visited,int m,int n)
@@ -27,27 +28,28 @@
      return;
      int x_move[]={0,0,1,-1};
      int y_move[]={1,-1,0,0};
-     for(int u=0;u<4;u++)
-     {
+    for(int u=0;u<4;u++)
+    {
          if(is_valid(i+y_move[u],j+x_move[u],x,input,visited,m,n))
          BFS(x,y,i+y_move[u],j+x_move[u],input,visited,g_visited,m,n);
-     }
-     void reset_visited(vector<vector<int>>&visited,int m,int n)
-     {
-         for(int i=0;i<m;i++)
-         {
-             for(int j;j<n;j++)
-             visited[i][j]=0;
-         }
-     }
+    }
+      
+}  
+void reset_visited(vector<vector<int>>&visited,int m,int n)
+{
+    for(int i=0;i<m;i++)
+    {
+        for(int j;j<n;j++)
+        visited[i][j]=0;
+    }
+}
  
- }
- void reset_result(int key,vector<vector<int>>&input,vector<vector<int>>&visited,vector<vector<int>>&result,int m,int n)
- {
-     for(int i=0;i<m;i++)
-     {
-         for(intj+0;j<n;j++)
-         {
+void reset_result(int key,vector<vector<int>>&input,vector<vector<int>>&visited,vector<vector<int>>&result,int m,int n)
+{
+    for(int i=0;i<m;i++)
+    {
+        for(int j=0;j<n;j++)
+        {
              if(visited[i][j] && input[i][j]==key)
              result[i][j]=visited[i][j];
              else
@@ -55,26 +57,10 @@
                  result[i][j]=0;
              }
              
-         }
-     }
- }
- void print_result(int res) 
-{ 
-    cout << "The largest connected "
-         << "component of the grid is :" << res << "\n"; 
-  
-    // prints the largest component 
-    for (int i = 0; i < n; i++) { 
-        for (int j = 0; j < m; j++) { 
-            if (result[i][j]) 
-                cout << result[i][j] << " "; 
-            else
-                cout << ". "; 
-        } 
-        cout << "\n"; 
-    } 
-} 
-  
+        }
+    }
+}
+
 // function to calculate the largest connected  
 // component 
 void computeLargestConnectedGrid(vector<vector<int>> &input,vector<vector<int>> &visited,vector<vector<int>> &g_visited,vector<vector<int>> &result,int m, int n) 
@@ -111,7 +97,8 @@ void computeLargestConnectedGrid(vector<vector<int>> &input,vector<vector<int>> 
             } 
         } 
     } 
-    print_result(current_max); 
+    cout<<current_max<<'\n';
+    }
 } 
 // Drivers Code 
 int main() 
@@ -134,7 +121,7 @@ int main()
     for(int i=0;i<k;i++)
     {
         cin>>x>>y;
-        char input[x][y]=1;
+        input[x][y]=1;
     }
 
     vector<vector<int>> vis(n);
@@ -164,3 +151,4 @@ int main()
     computeLargestConnectedGrid(input,vis,g_vis,res,m,n); 
     return 0; 
 } 
+
