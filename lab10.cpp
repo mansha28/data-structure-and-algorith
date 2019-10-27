@@ -1,10 +1,6 @@
 #include <bits/stdc++.h> 
 using namespace std; 
 
-typedef long long lli;
-typedef long li;
-#define forz(i,n) for(long i=0;i<n;i++)
-
 int COUNT; 
 
 bool is_valid(int x, int y, int key,vector<vector<int>> &input,vector<vector<int>> &visited,int n,int m) 
@@ -96,43 +92,50 @@ void computeLargestConnectedGrid(vector<vector<int>> &input,vector<vector<int>> 
 
 int main() 
 { 
-    int m1,n1,c;
-    cin>>n1>>m1>>c;
+    int m,n,k;
+    cin>>m>>n>>k;
     
     vector<vector<int>> input(n1);
     
     int temp;
-    forz(i,n1){
-        forz(j,m1){
+    for(int i=0;i<m;i++)
+    {
+        for(int j;j<n;j++)
+        {
             input[i].push_back(0);
         }
     }
     int x,y;
-    forz(i,c){
+    for(int i=0;i<k;i++)
+    {
         cin>>x>>y;
         input[x-1][y-1] = 1;
     }
     
 
-    vector<vector<int>> vis(n1);
-    vector<vector<int>> g_vis(n1);
-    vector<vector<int>> res(n1);
+    vector<vector<int>> vis(n);
+    vector<vector<int>> g_vis(n);
+    vector<vector<int>> res(n);
     
-    forz(i,n1){
-        forz(j,m1){
+    for(int i=0;i<m;i++)
+    {
+        for(int j=0;j<n;j++)
+        {
             vis[i].push_back(0);
             g_vis[i].push_back(0);
             res[i].push_back(0);
         }
     }
-    forz(i,n1){
-        forz(j,m1){
+    for(int i=0;i<m;i++)
+    {
+        for(int j;j<n;j++)
+        {
             if(!input[i][j]){
                 g_vis[i][j]=1;
             }
         }
     }
     
-    computeLargestConnectedGrid(input,vis,g_vis,res,n1,m1); 
+    computeLargestConnectedGrid(input,vis,g_vis,res,n,); 
     return 0; 
 } 
